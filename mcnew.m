@@ -16,7 +16,7 @@
 main(!IO) :-
     io.command_line_arguments(Args, !IO),
     (
-        Args = [Cmd, Name] % length(Args, 1)
+        Args = [Cmd, Name]
     ->
         (   if Cmd = "stub" then
                 create_stub(Name, !IO)
