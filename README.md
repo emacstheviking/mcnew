@@ -62,3 +62,14 @@ And you are done. As your project grows all you have to do as add the new
 source file names to the `DEPS` variable and the make magic should take care of
 the rest.
 
+Makefile Targets
+----------------
+Stock build:
+
+    $ make
+
+Install to your local $BIN folder (*nix only), no idea how it would go on Windows!
+
+    $ make install
+
+The value of $HOME/bin is used as the target for the copy.
