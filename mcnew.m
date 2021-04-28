@@ -11,7 +11,7 @@
 :- import_module io.
 :- pred main(io::di, io::uo) is det.
 :- implementation.
-:- import_module list, string.
+:- import_module list, string, time.
 
 main(!IO) :-
     io.command_line_arguments(Args, !IO),
@@ -32,14 +32,20 @@ main(!IO) :-
 
 :- pred create_stub(string::in, io::di, io::uo) is det.
 create_stub(Name, !IO) :-
+    % when did this monumental thing happen ?
+    time.time(TNow, !IO),
     io.format("\
-%%--------------------------------------------------%%
-%%--------------------------------------------------%%
+%%---------------------------------------------------------------------------%%
+%%---------------------------------------------------------------------------%%
 %%
-%%         \"%s\"
+%% File: %s.m
+%% Main authors: sjc
+%% Date: %s%%
 %%
-%%--------------------------------------------------%%
-%%--------------------------------------------------%%
+%% Start...
+%%
+%%---------------------------------------------------------------------------%%
+%%---------------------------------------------------------------------------%%
 :- module %s.
 :- interface.
 :- import_module io.
@@ -49,7 +55,11 @@ create_stub(Name, !IO) :-
 
 main(!IO) :-
     .\n",
-    [s(Name), s(Name)], !IO).
+    [
+        s(Name),
+        s(time.asctime(time.gmtime(TNow))),
+        s(Name)
+    ], !IO).
 
 
 :- pred create_makefile(string::in, io::di, io::uo) is det.
