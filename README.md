@@ -11,6 +11,14 @@ file application, after all `mmc --make` is all you need in that case but you
 never know when a project will grow and being able to clean the directory too
 is nice.
 
+Change History
+==============
+19 Nov 2021: Revamped with everything I've learned in the last few months!
+* Hopefully more idiomatic code.
+* Use of custom command type.
+* Improved content of main().
+* Makefile tweaks (-E added)
+
 
 Building
 ========
@@ -38,13 +46,22 @@ interesting times ahead. If you don't pipe the output to a file then by default
 it just gets written to `stdout` and then you could cut and paste it from the
 terminal window into a file or whatever you want to do.
 
+Environment Variables
+=====================
+
+If this is only ever used by you, you can set an environment variabled like so
+and this will be automatically used to fill in the [author] slot. If you don't
+provide an author and one is not passed on the command line it remains blank.
+
+    export MCNEW_AUTHOR="Your name here"
+
 
 Create a Module
 ===============
 
 To create a stubbed out -main- application:
 
-    mcnew foo > foo.m
+    mcnew foo [author]> foo.m
 
 The reason I don't save to a file explicitly in the code is because I wanted to
 keep it simple! Otherwise I would have had to get into the file system
@@ -56,7 +73,7 @@ Create a Makefile
 
 If you want a makefile to go with your new project then issue:
 
-    mmcnew makefile foo > makefile
+    mmcnew makefile foo [author] > makefile
 
 And you are done. As your project grows all you have to do as add the new
 source file names to the `DEPS` variable and the make magic should take care of
