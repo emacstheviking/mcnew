@@ -17,7 +17,6 @@ install:: $(BIN)
 
 $(BIN): $(DEPS)
 	mmc $(FLAGS) --make $(BIN)
-	mv -fv $(BIN) $(BIN)
 
 clean::
 	rm -rf Mercury
