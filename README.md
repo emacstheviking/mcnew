@@ -61,7 +61,7 @@ Create a Module
 
 To create a stubbed out -main- application:
 
-    mcnew foo [author]> foo.m
+    mcnew stub foo [author]> foo.m
 
 The reason I don't save to a file explicitly in the code is because I wanted to
 keep it simple! Otherwise I would have had to get into the file system
